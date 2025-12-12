@@ -25,21 +25,8 @@
   --gradient-bg: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-tertiary: #334155;
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
-    --border: #334155;
-    --border-light: #475569;
-    --shadow: rgba(0, 0, 0, 0.3);
-    --shadow-lg: rgba(0, 0, 0, 0.4);
-    --gradient-bg: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-  }
-}
+/* Fixed color scheme - no automatic dark mode switching */
+/* Colors remain consistent regardless of system preference */
 
 /* Animations */
 @keyframes fadeInDown {
@@ -189,18 +176,11 @@ p {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(15, 23, 42, 0.95); /* Consistent dark navy */
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.3);
   transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (prefers-color-scheme: dark) {
-  .navbar {
-    background: rgba(15, 23, 42, 0.95);
-    border-bottom-color: var(--border);
-  }
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .nav-container {
@@ -219,7 +199,7 @@ p {
   gap: 0.75rem;
   font-weight: 700;
   font-size: 1.25rem;
-  color: var(--text-primary);
+  color: #f1f5f9; /* Consistent light text for dark navbar */
 }
 
 .brand-logo {
@@ -241,14 +221,14 @@ p {
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: #cbd5e1; /* Consistent light gray for dark navbar */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--primary);
+  color: #7c3aed; /* Consistent purple hover */
 }
 
 .mobile-menu-toggle {
@@ -263,18 +243,27 @@ p {
 .mobile-menu-toggle span {
   width: 1.5rem;
   height: 2px;
-  background: var(--text-primary);
+  background: #f1f5f9; /* Consistent light color for dark navbar */
   transition: all 0.3s ease;
 }
 
 
 
+/* Always show light logo for dark navbar */
 .logo-dark { display: none; }
 .logo-light { display: inline-block; }
 
-@media (prefers-color-scheme: dark) {
-  .logo-dark { display: inline-block; }
-  .logo-light { display: none; }
+/* Navbar button styles - consistent colors */
+.navbar .btn-primary {
+  background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  color: white;
+  border: none;
+}
+
+.navbar .btn-primary:hover {
+  background: linear-gradient(135deg, #6d28d9 0%, #0891b2 100%);
+  transform: translateY(-2px);
+}
 }
 
 
