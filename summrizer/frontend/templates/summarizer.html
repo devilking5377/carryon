@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarryOn Summary</title>
+    <link rel="icon" href="/assets/favicon.jpeg" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='summarizer.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Brand Header -->
+            <div class="brand-header">
+                <img src="/assets/light theme logo.jpeg" alt="CarryOn" class="brand-logo logo-light" />
+                <img src="/assets/dark theme logo.jpeg" alt="CarryOn" class="brand-logo logo-dark" />
+                <span class="brand-name">CarryOn</span>
+            </div>
+
+            <!-- Options Panel -->
+            <div class="options-container">
+                <h3 class="options-title">Options</h3>
+                
+                <!-- Theme Selection -->
+                <div class="option-section">
+                    <label class="option-item">
+                        <input type="radio" name="theme" value="light" checked>
+                        <span class="radio-indicator"></span>
+                        <span class="option-text">Light</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="theme" value="dark">
+                        <span class="radio-indicator"></span>
+                        <span class="option-text">Dark</span>
+                    </label>
+                </div>
+
+                <!-- Auto Size -->
+                <div class="option-section">
+                    <label class="option-item">
+                        <input type="checkbox" id="autoSize" checked>
+                        <span class="checkbox-indicator"></span>
+                        <span class="option-text">Auto size</span>
+                    </label>
+                </div>
+
+                <!-- Target Sentences -->
+                <div class="option-section">
+                    <div class="range-section">
+                        <label class="range-label">Target sentences:</label>
+                        <div class="range-input-container">
+                            <input type="range" id="targetSentences" min="4" max="80" value="16" disabled>
+                            <span id="targetValue" class="range-display">16</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Format -->
+                <div class="option-section">
+                    <div class="section-label">Output format:</div>
+                    <label class="option-item">
+                        <input type="radio" name="format" value="plain" checked>
+                        <span class="radio-indicator"></span>
+                        <span class="option-text">Plain text</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="format" value="markdown">
+                        <span class="radio-indicator"></span>
+                        <span class="option-text">Markdown</span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <!-- Header -->
+            <header class="content-header">
+                <h1 class="page-title">Transform long AI outputs into concise, paste-ready summaries</h1>
+            </header>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Input Section -->
+                <section class="input-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Input</h2>
+                    </div>
+                    <div class="card-content">
+                        <textarea 
+                            id="inputText" 
+                            placeholder="Paste content from your AI agent..." 
+                            class="text-input"
+                        ></textarea>
+                        <button id="summarizeBtn" class="create-btn">
+                            Create Summary
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Output Section -->
+                <section id="outputSection" class="output-card" style="display: none;">
+                    <div class="card-header">
+                        <h2 class="card-title">Summary</h2>
+                        <div class="card-actions">
+                            <button id="copyBtn" class="action-btn">Copy</button>
+                            <button id="downloadBtn" class="action-btn">Download</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div id="summaryOutput" class="summary-text"></div>
+                        <div id="metaInfo" class="summary-meta"></div>
+                    </div>
+                    
+                    <div id="continuationSteps" class="continuation-section" style="display: none;">
+                        <h3 class="continuation-title">Continuation Steps</h3>
+                        <p class="continuation-desc">Use these steps to continue your work in another agent or account:</p>
+                        <ul id="filesList" class="files-list"></ul>
+                        <ul class="steps-list">
+                            <li>Paste the summary into your next agent to provide context</li>
+                            <li>If the next agent supports files, upload the listed files and reference this summary</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Feature Cards -->
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Smart Processing</h3>
+                    <p class="feature-desc">Analyzes word frequencies and importance signals to extract key sentences while preserving structure and meaning.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Privacy First</h3>
+                    <p class="feature-desc">All processing happens locally. No API keys required, no data sent to external services.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-desc">Instant summarization with hierarchical processing for long documents to maintain coherence.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='summarizer.js') }}"></script>
+</body>
+</html>

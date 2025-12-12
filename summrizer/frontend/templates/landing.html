@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CarryOn Summary - AI Text Summarization Tool</title>
+    <meta name="description" content="Transform long AI outputs into concise, paste-ready summaries. Free, privacy-first text summarization with browser extension and API support." />
+    <meta name="keywords" content="AI summarization, text summary, AI tools, browser extension, API, privacy-first, local processing" />
+    <meta name="author" content="CarryOn Summary" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://carryon-summary.com/" />
+    <meta property="og:title" content="CarryOn Summary - AI Text Summarization Tool" />
+    <meta property="og:description" content="Transform long AI outputs into concise, paste-ready summaries. Free, privacy-first text summarization." />
+    <meta property="og:image" content="/assets/light theme logo.jpeg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://carryon-summary.com/" />
+    <meta property="twitter:title" content="CarryOn Summary - AI Text Summarization Tool" />
+    <meta property="twitter:description" content="Transform long AI outputs into concise, paste-ready summaries. Free, privacy-first text summarization." />
+    <meta property="twitter:image" content="/assets/light theme logo.jpeg" />
+
+    <link rel="icon" href="/assets/favicon.jpeg" />
+    <link rel="canonical" href="https://carryon-summary.com/" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}" />
+    <script src="{{ url_for('static', filename='landing.js') }}" defer></script>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <header class="hero">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="brand">
+            <img src="/assets/light theme logo.jpeg" alt="CarryOn Summary" class="brand-logo logo-light" />
+            <img src="/assets/dark theme logo.jpeg" alt="CarryOn Summary" class="brand-logo logo-dark" />
+            <span class="brand-text">CarryOn Summary</span>
+          </div>
+          <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <a href="/docs" class="nav-link">API Docs</a>
+            <a href="#pricing" class="nav-link">Pricing</a>
+            <button class="btn btn-primary" id="openWeb">Try Now</button>
+          </div>
+          <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">Transform Long AI Outputs into <span class="highlight">Concise Summaries</span></h1>
+          <p class="hero-subtitle">Privacy-first text summarization that preserves key information, detects file paths, and helps you continue work across different AI agents seamlessly.</p>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-large" id="tryNowBtn">
+              <span>Try Free Now</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <button class="btn btn-secondary btn-large" id="downloadExtBtn">
+              <span>Download Extension</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Privacy Protected</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">0</div>
+              <div class="stat-label">External APIs</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">Free</div>
+              <div class="stat-label">Forever</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-demo">
+          <div class="demo-window">
+            <div class="demo-header">
+              <div class="demo-controls">
+                <span class="demo-dot red"></span>
+                <span class="demo-dot yellow"></span>
+                <span class="demo-dot green"></span>
+              </div>
+              <div class="demo-title">CarryOn Summary</div>
+            </div>
+            <div class="demo-content">
+              <div class="demo-input">
+                <div class="demo-label">Input (1,247 words)</div>
+                <div class="demo-text">This is a comprehensive analysis of the quarterly performance metrics showing significant improvements across multiple key performance indicators including user engagement rates, conversion optimization, revenue growth trajectories, and operational efficiency measures...</div>
+              </div>
+              <div class="demo-arrow">↓</div>
+              <div class="demo-output">
+                <div class="demo-label">Summary (3 sentences)</div>
+                <div class="demo-text">Quarterly performance shows significant improvements across key metrics. User engagement and conversion rates increased substantially. Revenue growth and operational efficiency exceeded targets.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Powerful Features for Every Use Case</h2>
+          <p>Everything you need to create perfect summaries from any text content</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Smart Auto-Sizing</h3>
+            <p>Automatically determines optimal summary length based on content complexity and length, or set your own target sentence count.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>File Path Detection</h3>
+            <p>Automatically detects mentioned files and provides continuation steps to help you maintain context across different AI agents.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3>Browser Extension</h3>
+            <p>One-click summarization from any webpage. Auto-detects AI chat conversations on ChatGPT, Claude, Gemini, and more.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Privacy First</h3>
+            <p>All processing happens locally on your machine. No data sent to external services, no API keys required, complete privacy.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Lightning Fast</h3>
+            <p>Advanced extractive algorithm processes text instantly. Hierarchical summarization for long documents maintains coherence.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Multiple Formats</h3>
+            <p>Export summaries as plain text or Markdown. Download as .txt or .md files. Light and dark theme support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2>How It Works</h2>
+          <p>Simple, powerful, and intelligent text summarization in three steps</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Input Your Text</h3>
+              <p>Paste long AI outputs, articles, or any text content. Use the browser extension to grab text from any webpage or AI chat interface.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>AI Processing</h3>
+              <p>Our advanced algorithm analyzes word frequencies, identifies key sentences, and scores content based on importance signals like numbers, capitals, and structure.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Get Perfect Summary</h3>
+              <p>Receive a concise, paste-ready summary that preserves key information, lists, dates, and file paths. Copy, download, or continue your work seamlessly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases">
+      <div class="container">
+        <div class="section-header">
+          <h2>Perfect for Every Workflow</h2>
+          <p>Trusted by developers, researchers, content creators, and AI enthusiasts worldwide</p>
+        </div>
+
+        <div class="use-cases-grid">
+          <div class="use-case">
+            <div class="use-case-icon">👨‍💻</div>
+            <h3>Developers</h3>
+            <p>Summarize code reviews, documentation, and AI-generated solutions. Maintain context when switching between different AI coding assistants.</p>
+          </div>
+
+          <div class="use-case">
+            <div class="use-case-icon">📊</div>
+            <h3>Researchers</h3>
+            <p>Condense lengthy research papers, extract key findings, and create executive summaries for stakeholders and team members.</p>
+          </div>
+
+          <div class="use-case">
+            <div class="use-case-icon">✍️</div>
+            <h3>Content Creators</h3>
+            <p>Transform long-form content into social media posts, extract key points from interviews, and create engaging summaries.</p>
+          </div>
+
+          <div class="use-case">
+            <div class="use-case-icon">🤖</div>
+            <h3>AI Users</h3>
+            <p>Continue conversations across different AI platforms, maintain context between sessions, and create shareable AI interaction summaries.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2>Simple, Transparent Pricing</h2>
+          <p>Free forever with all features included. No hidden costs, no subscriptions.</p>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Free Forever</h3>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount">0</span>
+              <span class="period">/forever</span>
+            </div>
+          </div>
+          
+          <div class="pricing-features">
+            <div class="feature">✅ Unlimited text summarization</div>
+            <div class="feature">✅ Browser extension included</div>
+            <div class="feature">✅ API access for developers</div>
+            <div class="feature">✅ Multiple export formats</div>
+            <div class="feature">✅ File path detection</div>
+            <div class="feature">✅ Privacy-first processing</div>
+            <div class="feature">✅ Light & dark themes</div>
+            <div class="feature">✅ Open source</div>
+          </div>
+
+          <button class="btn btn-primary btn-large pricing-btn" id="getStartedBtn">
+            Get Started Free
+          </button>
+
+          <p class="pricing-note">No credit card required. No account needed. Start summarizing immediately.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Transform Your Text?</h2>
+          <p>Join thousands of users who trust CarryOn Summary for their text summarization needs</p>
+          
+          <div class="cta-actions">
+            <button class="btn btn-primary btn-large" id="finalCTABtn">
+              Start Summarizing Now
+            </button>
+            <a href="/docs" class="btn btn-secondary btn-large">
+              View Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-brand">
+              <img src="/assets/light theme logo.jpeg" alt="CarryOn Summary" class="footer-logo logo-light" />
+              <img src="/assets/dark theme logo.jpeg" alt="CarryOn Summary" class="footer-logo logo-dark" />
+              <span>CarryOn Summary</span>
+            </div>
+            <p>Privacy-first AI text summarization tool that helps you work more efficiently across different platforms and AI agents.</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Product</h4>
+            <a href="/app">Web App</a>
+            <a href="#" id="footerExtension">Browser Extension</a>
+            <a href="/docs">API Documentation</a>
+            <a href="/about">About</a>
+          </div>
+
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <a href="#troubleshooting">Troubleshooting</a>
+            <a href="/docs">Documentation</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 CarryOn Summary. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- FAQ Modal (Hidden sections for SEO) -->
+    <div style="display: none;">
+      <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div>
+          <h3>Does CarryOn Summary use third-party LLMs?</h3>
+          <p>No. All processing happens locally on your machine or chosen server. No data is sent to external AI services.</p>
+        </div>
+        <div>
+          <h3>Can I control the summary length?</h3>
+          <p>Yes. You can use auto-sizing for optimal length or manually set target sentence count (4-80 sentences).</p>
+        </div>
+        <div>
+          <h3>Which websites support auto-detection?</h3>
+          <p>ChatGPT, Claude, Gemini, Copilot, Poe, Perplexity, and many other AI chat interfaces.</p>
+        </div>
+        <div>
+          <h3>Is my data private and secure?</h3>
+          <p>Absolutely. All text processing happens locally. No data leaves your machine unless you choose to deploy on your own server.</p>
+        </div>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <p>Common solutions for CarryOn Summary issues including extension setup, API configuration, and server deployment.</p>
+      </section>
+
+      <section id="privacy">
+        <h2>Privacy Policy</h2>
+        <p>CarryOn Summary is designed with privacy as the top priority. All text processing occurs locally on your device.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Get in touch with the CarryOn Summary team for support, feedback, or partnership opportunities.</p>
+      </section>
+
+      <section id="terms">
+        <h2>Terms of Service</h2>
+        <p>Terms and conditions for using CarryOn Summary software and services.</p>
+      </section>
+    </div>
+  </body>
+</html>

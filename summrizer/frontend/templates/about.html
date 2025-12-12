@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - {{ app_name }}</title>
+    <link rel="icon" href="/assets/favicon.jpeg" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <img src="/assets/light theme logo.jpeg" alt="CarryOn" class="brand-logo logo-light" />
+                <img src="/assets/dark theme logo.jpeg" alt="CarryOn" class="brand-logo logo-dark" />
+                <span>{{ app_name }} - About</span>
+            </div>
+            <div class="top-actions">
+                <a href="/" class="btn">Home</a>
+                <a href="/app" class="btn">Web App</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1>About {{ app_name }}</h1>
+        
+        <section>
+            <h2>What is CarryOn Summary?</h2>
+            <p>CarryOn Summary is a text summarization tool designed to help you create concise, paste-ready summaries from long AI outputs. It's perfect for continuing work across different AI agents and accounts while maintaining context.</p>
+        </section>
+        
+        <section>
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Smart Summarization</strong>: Uses extractive algorithms to preserve key information</li>
+                <li><strong>Auto-sizing</strong>: Automatically determines optimal summary length based on content</li>
+                <li><strong>File Detection</strong>: Identifies file paths and suggests continuation steps</li>
+                <li><strong>Multiple Formats</strong>: Export as plain text or Markdown</li>
+                <li><strong>Browser Extension</strong>: Summarize content directly from web pages</li>
+                <li><strong>Privacy-First</strong>: No external APIs, runs entirely on your infrastructure</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>How It Works</h2>
+            <ol>
+                <li><strong>Text Analysis</strong>: Splits content into sentences and analyzes word frequencies</li>
+                <li><strong>Sentence Scoring</strong>: Scores sentences based on importance signals like numbers, capitals, and structure</li>
+                <li><strong>Selection</strong>: Chooses top-scoring sentences while preserving original order</li>
+                <li><strong>Formatting</strong>: Groups sentences into readable paragraphs</li>
+                <li><strong>Enhancement</strong>: Detects file paths and creates continuation steps</li>
+            </ol>
+        </section>
+        
+        <section>
+            <h2>Technical Details</h2>
+            <ul>
+                <li><strong>Algorithm</strong>: Extractive summarization with frequency-based scoring</li>
+                <li><strong>Backend</strong>: Flask web framework with modular architecture</li>
+                <li><strong>Frontend</strong>: Modern HTML/CSS/JavaScript with responsive design</li>
+                <li><strong>Extension</strong>: Manifest V3 browser extension with auto-detection</li>
+                <li><strong>Processing</strong>: Hierarchical chunking for long documents</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Use Cases</h2>
+            <ul>
+                <li><strong>AI Agent Continuity</strong>: Transfer context between different AI services</li>
+                <li><strong>Code Review Summaries</strong>: Condense long code discussions</li>
+                <li><strong>Meeting Notes</strong>: Extract key points from lengthy transcripts</li>
+                <li><strong>Research Synthesis</strong>: Combine insights from multiple sources</li>
+                <li><strong>Documentation</strong>: Create executive summaries of technical documents</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Privacy & Security</h2>
+            <p>CarryOn Summary is designed with privacy in mind:</p>
+            <ul>
+                <li>No data is sent to external services</li>
+                <li>All processing happens locally or on your chosen server</li>
+                <li>No API keys or accounts required</li>
+                <li>Open source architecture for transparency</li>
+                <li>CORS enabled for browser extension compatibility</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Version Information</h2>
+            <ul>
+                <li><strong>Version</strong>: {{ app_version }}</li>
+                <li><strong>Architecture</strong>: Backend/Frontend separated Flask application</li>
+                <li><strong>API</strong>: RESTful endpoints with JSON responses</li>
+                <li><strong>Compatibility</strong>: Modern browsers, Chrome extensions</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Getting Started</h2>
+            <p>Ready to try CarryOn Summary?</p>
+            <div style="margin-top: 1rem;">
+                <a href="/app" class="btn primary">Try Web App</a>
+                <a href="/docs" class="btn">View API Docs</a>
+                <a href="/download-extension" class="btn">Download Extension</a>
+            </div>
+        </section>
+    </div>
+    
+    <script src="{{ url_for('static', filename='landing.js') }}"></script>
+</body>
+</html>

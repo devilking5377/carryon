@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CarryOn Summary Options</title>
+    <style>
+      :root {
+        --bg: #0f172a; --card: #0b1220; --fg: #e2e8f0; --muted: #94a3b8; --border: #334155; --brand:#7c3aed; --btn-fg:#ffffff;
+      }
+      @media (prefers-color-scheme: light) {
+        :root { --bg:#f1f5f9; --card:#ffffff; --fg:#0f172a; --muted:#64748b; --border:#cbd5e1; --brand:#7c3aed; --btn-fg:#ffffff; }
+      }
+      body { font-family: system-ui, sans-serif; margin: 0; color: var(--fg); background: linear-gradient(180deg, var(--card), var(--bg)); }
+      .header { display:flex; align-items:center; justify-content:space-between; padding:16px; border-bottom:1px solid var(--border); }
+      .brand { display:flex; align-items:center; gap:8px; font-weight:700; }
+      .brand .logo { width:22px; height:22px; background:var(--brand); border-radius:4px; }
+      .container { max-width: 800px; margin: 0 auto; padding: 16px; }
+      .card { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; }
+      label { display:block; margin:8px 0; color: var(--muted); }
+      input[type="text"], input[type="number"] { width:100%; padding:10px; border:1px solid var(--border); border-radius:8px; color:var(--fg); background:var(--card); }
+      .row { display:flex; gap:12px; align-items:center; }
+      .btn { padding:10px 14px; border-radius:8px; border:1px solid var(--border); background: transparent; color: var(--fg); cursor:pointer; }
+      .btn.primary { background: var(--brand); color: var(--btn-fg); border-color: transparent; font-weight:600; }
+      .status { margin-top:8px; font-size:12px; color:var(--muted); }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="brand"><img src="icons/icon32.png" alt="CarryOn" class="logo" />CarryOn Summary</div>
+    </div>
+    <div class="container">
+      <div class="card">
+        <label>API Base URL
+          <input id="api" type="text" placeholder="https://your-backend.example.com" />
+        </label>
+        <div class="row">
+          <label><input type="checkbox" id="auto" /> Auto size by default</label>
+          <label>Target sentences <input id="target" type="number" min="4" max="80" value="16" /></label>
+        </div>
+        <button class="btn primary" id="save">Save Settings</button>
+        <div class="status" id="status"></div>
+      </div>
+    </div>
+    <script src="options.js"></script>
+  </body>
+</html>

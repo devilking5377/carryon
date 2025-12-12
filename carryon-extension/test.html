@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarryOn Extension Test Page</title>
+    <link rel="icon" href="favicon.jpeg" />
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .test-content {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+        .highlight {
+            background: yellow;
+            padding: 2px 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CarryOn Extension Test Page</h1>
+    
+    <div class="instructions">
+        <h3>🧪 How to test the extension:</h3>
+        <ol>
+            <li>Make sure the CarryOn Summary server is running on <code>http://localhost:5000</code></li>
+            <li>Install the CarryOn extension in your browser</li>
+            <li>Configure the extension API Base URL to <code>http://localhost:5000</code></li>
+            <li>Select some text below and click the extension icon</li>
+            <li>Click "Grab Selection" in the popup</li>
+            <li>Click "Create Summary" to test the functionality</li>
+        </ol>
+    </div>
+
+    <div class="test-content">
+        <h2>Sample Text for Testing</h2>
+        <p>This is a comprehensive test document for the CarryOn Summary browser extension. The extension is designed to help users create concise summaries from long AI outputs and web content. It uses an extractive summarization algorithm that analyzes word frequencies and importance signals to select the most relevant sentences.</p>
+        
+        <p>The summarization process works by first splitting the input text into individual sentences. Then it calculates word frequencies while filtering out common stopwords like "the", "and", "is", etc. Each sentence is scored based on the frequency of important words it contains, with bonus points given for numbers, capitalized words, and structured content like bullet points.</p>
+        
+        <p>For longer documents, the system uses hierarchical summarization. It first breaks the text into manageable chunks, summarizes each chunk individually, then combines and re-summarizes the results to maintain coherence while preserving key information.</p>
+        
+        <p>The extension supports multiple output formats including plain text and Markdown. It can automatically detect file paths mentioned in the content and provide continuation steps for users who want to continue their work in other AI agents or development environments.</p>
+        
+        <p>Key features include auto-sizing based on content length, manual control over summary length (4-80 sentences), theme support for light and dark modes, and compatibility with popular AI chat interfaces like ChatGPT, Claude, Gemini, and others.</p>
+    </div>
+
+    <div class="test-content">
+        <h2>Technical Implementation Details</h2>
+        <p>The backend is built with Flask and uses a modular architecture with separate routes for API endpoints and web pages. The frontend uses modern HTML, CSS, and JavaScript with responsive design principles. The summarization algorithm is implemented in Python using regular expressions and the Counter class from the collections module.</p>
+        
+        <p>File detection is handled by scanning text for common file extensions like .py, .js, .html, .css, .json, .md, and many others. When files are detected, the system generates continuation steps to help users maintain context when switching between different AI agents or development tools.</p>
+        
+        <p>The browser extension uses Manifest V3 and includes content scripts that can automatically detect conversation text from supported AI chat websites. It stores user preferences in Chrome's sync storage and supports cross-origin requests through CORS configuration on the server.</p>
+    </div>
+
+    <div class="instructions">
+        <h3>✅ Expected Results:</h3>
+        <ul>
+            <li>The extension should grab the selected text</li>
+            <li>The API should return a concise summary</li>
+            <li>File paths (like .py, .js, .html) should be detected</li>
+            <li>Continuation steps should be suggested</li>
+            <li>You should be able to copy or download the summary</li>
+        </ul>
+    </div>
+
+    <script>
+        // Add some dynamic content for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('CarryOn Extension Test Page loaded');
+            console.log('Server should be running at: http://localhost:5000');
+        });
+    </script>
+</body>
+</html>

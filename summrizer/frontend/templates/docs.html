@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - {{ app_name }}</title>
+    <link rel="icon" href="/assets/favicon.jpeg" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <img src="/assets/light theme logo.jpeg" alt="CarryOn" class="brand-logo logo-light" />
+                <img src="/assets/dark theme logo.jpeg" alt="CarryOn" class="brand-logo logo-dark" />
+                <span>{{ app_name }} - Documentation</span>
+            </div>
+            <div class="top-actions">
+                <a href="/" class="btn">Home</a>
+                <a href="/app" class="btn">Web App</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1>API Documentation</h1>
+        
+        <section>
+            <h2>Overview</h2>
+            <p>The CarryOn Summary API provides text summarization capabilities through RESTful endpoints.</p>
+        </section>
+        
+        <section>
+            <h2>Base URL</h2>
+            <pre><code>http://localhost:5000{{ api_base }}</code></pre>
+        </section>
+        
+        <section>
+            <h2>Endpoints</h2>
+            
+            <h3>POST {{ api_base }}/summarize</h3>
+            <p>Summarize text content with optional target sentence count.</p>
+            
+            <h4>Request Body</h4>
+            <pre><code>{
+  "text": "Your text content here...",
+  "target_sentences": 16  // optional, null for auto-size
+}</code></pre>
+            
+            <h4>Response</h4>
+            <pre><code>{
+  "summary": "Summarized text content...",
+  "meta": {
+    "words_total": 1234,
+    "chunks": 2,
+    "target_sentences": 16
+  },
+  "status": "success"
+}</code></pre>
+            
+            <h3>GET {{ api_base }}/health</h3>
+            <p>Health check endpoint.</p>
+            
+            <h4>Response</h4>
+            <pre><code>{
+  "status": "healthy",
+  "service": "CarryOn Summary API",
+  "version": "{{ app_version }}"
+}</code></pre>
+            
+            <h3>GET {{ api_base }}/info</h3>
+            <p>Get API information and available endpoints.</p>
+            
+            <h3>POST {{ api_base }}/stats</h3>
+            <p>Get text statistics without summarizing.</p>
+            
+            <h4>Request Body</h4>
+            <pre><code>{
+  "text": "Text to analyze"
+}</code></pre>
+            
+            <h4>Response</h4>
+            <pre><code>{
+  "words_total": 1234,
+  "sentences_total": 45,
+  "paragraphs_total": 8,
+  "recommended_target": 16,
+  "status": "success"
+}</code></pre>
+        </section>
+        
+        <section>
+            <h2>Error Handling</h2>
+            <p>All endpoints return appropriate HTTP status codes and error messages:</p>
+            
+            <h4>400 Bad Request</h4>
+            <pre><code>{
+  "error": "Text is required",
+  "code": "MISSING_TEXT"
+}</code></pre>
+            
+            <h4>500 Internal Server Error</h4>
+            <pre><code>{
+  "error": "Internal server error: ...",
+  "code": "INTERNAL_ERROR"
+}</code></pre>
+        </section>
+        
+        <section>
+            <h2>Examples</h2>
+            
+            <h3>cURL Example</h3>
+            <pre><code>curl -X POST http://localhost:5000{{ api_base }}/summarize \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "Your long text here...",
+    "target_sentences": 10
+  }'</code></pre>
+            
+            <h3>JavaScript Example</h3>
+            <pre><code>const response = await fetch('{{ api_base }}/summarize', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    text: 'Your long text here...',
+    target_sentences: 10
+  })
+});
+
+const data = await response.json();
+console.log(data.summary);</code></pre>
+        </section>
+    </div>
+    
+    <script src="{{ url_for('static', filename='landing.js') }}"></script>
+</body>
+</html>
