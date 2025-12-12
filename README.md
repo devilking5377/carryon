@@ -146,8 +146,8 @@ summrizer/
 │       ├── summarizer.css  # App styles
 │       └── summarizer.js   # App functionality
 └── assets/                 # Logo images
-    ├── light theme logo.jpeg
-    └── dark theme logo.jpeg
+    ├── light-theme-logo.jpeg
+    └── dark-theme-logo.jpeg
 ```
 
 ## Development
