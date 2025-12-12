@@ -2,7 +2,7 @@
 CarryOn Summary - Main Flask Application
 Restructured with proper backend/frontend separation
 """
-from flask import Flask
+from flask import Flask, send_from_directory, abort
 from flask_cors import CORS
 from pathlib import Path
 import os
@@ -46,6 +46,43 @@ def create_app(config=None):
     # Register blueprints
     app.register_blueprint(api_bp)
     app.register_blueprint(web_bp)
+    
+    # Static file serving routes for Vercel
+    @app.route('/static/<path:filename>')
+    def serve_static(filename):
+        """Serve static files (CSS, JS) directly through Flask"""
+        try:
+            # Try to serve from the frontend static folder
+            static_dir = Path(__file__).parent / '../frontend/static'
+            if static_dir.exists():
+                return send_from_directory(static_dir, filename)
+            
+            # Fallback: try root static folder
+            root_static = Path(__file__).parent / '../../static'
+            if root_static.exists():
+                return send_from_directory(root_static, filename)
+                
+            abort(404)
+        except Exception:
+            abort(404)
+    
+    @app.route('/assets/<path:filename>')
+    def serve_assets(filename):
+        """Serve asset files (images, logos) directly through Flask"""
+        try:
+            # Try to serve from the assets folder
+            assets_dir = Path(__file__).parent / '../assets'
+            if assets_dir.exists():
+                return send_from_directory(assets_dir, filename)
+            
+            # Fallback: try root assets folder
+            root_assets = Path(__file__).parent / '../../assets'
+            if root_assets.exists():
+                return send_from_directory(root_assets, filename)
+                
+            abort(404)
+        except Exception:
+            abort(404)
     
     # Global error handlers
     @app.errorhandler(404)
