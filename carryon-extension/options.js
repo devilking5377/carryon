@@ -1,10 +1,10 @@
 function load() {
   chrome.storage.sync.get(["API_BASE_URL", "auto", "target"], (cfg) => {
-    document.getElementById("api").value = cfg.API_BASE_URL || "http://localhost:8000"
+    document.getElementById("api").value = cfg.API_BASE_URL || "https://carryon-summarizer.vercel.app"
     document.getElementById("auto").checked = cfg.auto ?? true
     document.getElementById("target").value = cfg.target || 16
     const status = document.getElementById("status")
-    if (status) status.textContent = (cfg.API_BASE_URL || "http://localhost:8000") ? "API configured" : "Set API Base URL"
+    if (status) status.textContent = (cfg.API_BASE_URL || "https://carryon-summarizer.vercel.app") ? "API configured" : "Set API Base URL"
   })
 }
 

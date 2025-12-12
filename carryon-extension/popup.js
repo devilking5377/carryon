@@ -1,4 +1,4 @@
-const DEFAULT_API_BASE = 'http://localhost:5000'
+const DEFAULT_API_BASE = 'https://carryon-summarizer.vercel.app'
 
 async function getConfig() {
   return new Promise((resolve) => {

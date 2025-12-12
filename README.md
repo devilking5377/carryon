@@ -18,7 +18,14 @@ Concise, paste-ready summaries for long AI outputs. Single Flask server with int
 - **Extension**: MV3 browser extension with auto-detection
 - **Landing**: Integrated documentation and download page
 
-## Quick Start
+## 🌐 Live Deployment
+**Try it now:** [https://carryon-summarizer.vercel.app](https://carryon-summarizer.vercel.app)
+
+- **Web App**: [https://carryon-summarizer.vercel.app/app](https://carryon-summarizer.vercel.app/app)
+- **API**: `https://carryon-summarizer.vercel.app/api/summarize`
+- **Browser Extension**: Works with live deployment (see installation below)
+
+## Quick Start (Local Development)
 
 ### Option 1: Simple Run Script
 ```bash
@@ -34,7 +41,7 @@ pip install flask flask-cors
 python app.py
 ```
 
-### Access Points
+### Local Access Points
 - **Landing page**: http://localhost:5000/
 - **Web App**: http://localhost:5000/app
 - **API**: http://localhost:5000/api/summarize
@@ -49,27 +56,52 @@ python app.py
 - **Continuation Steps**: Automatically detects file paths and suggests next steps
 - **Responsive Design**: Works on desktop and mobile
 
-## Browser Extension (Chromium)
-1. **Download**: Click "Download Extension" on the landing page
-2. **Install**: 
-   - Go to `chrome://extensions`
-   - Enable Developer Mode
-   - Click "Load unpacked" and select the extracted folder
-3. **Configure**: 
-   - Click the extension icon
-   - Set API Base URL to `http://localhost:5000`
-   - Save settings
-4. **Use**:
-   - Select text on any page
-   - Click "Grab Selection" in the popup
+## Browser Extension Installation
+
+### 🚀 Quick Install (Works with Live Deployment)
+The extension now works with the live deployment at `https://carryon-summarizer.vercel.app` - no local server needed!
+
+1. **Download Extension**:
+   - Download the `carryon-extension` folder from this repository
+   - Extract it to your computer
+
+2. **Install in Browser**:
+   - Open Chrome/Edge/Brave
+   - Go to `chrome://extensions` (or `edge://extensions`, `brave://extensions`)
+   - Turn ON "Developer mode" (toggle in top-right)
+   - Click "Load unpacked" button
+   - Select the `carryon-extension` folder
+   - ✅ Extension installed!
+
+3. **Start Using**:
+   - **No setup needed!** Pre-configured for live deployment
+   - Go to any website (ChatGPT, Claude, etc.)
+   - Select text or let it auto-detect AI chat content
+   - Click the CarryOn extension icon
    - Click "Create Summary"
-   - Copy or download the result
+   - Copy or download your summary!
 
-### Supported Sites
-Auto-detection works on ChatGPT, Claude, Gemini, Copilot, Poe, Perplexity, and other AI chat interfaces.
+### ✨ Extension Features
+- 🤖 **Auto-detects** content from ChatGPT, Claude, Gemini, Copilot, Poe, Perplexity
+- 📝 **Manual selection** works on any website
+- ⚡ **Instant summaries** - no API keys or local server needed
+- 📋 **Copy to clipboard** or download as .txt file
+- 🎯 **Smart auto-sizing** or manual sentence control (4-80)
 
-### ⚠️ Important: Server Dependency
-The browser extension **requires the Flask server to be running** to function. It cannot work independently. Always ensure the server is running (`python run.py`) before using the extension.
+### 🔧 Advanced Settings (Optional)
+- Click extension icon → expand "Advanced" section
+- API URL pre-configured: `https://carryon-summarizer.vercel.app`
+- Adjust summary length as needed
+
+### 🌐 Supported Sites
+**Auto-detection works on:**
+- ChatGPT (chat.openai.com)
+- Claude (claude.ai)
+- Gemini (gemini.google.com)
+- Copilot (copilot.microsoft.com)
+- Poe (poe.com)
+- Perplexity (perplexity.ai)
+- **Manual selection works on any website**
 
 ## API Reference
 
